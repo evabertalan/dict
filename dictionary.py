@@ -19,6 +19,9 @@ class Dictionary:
         self.solid = '#e2fcfb'
 
     def start(self):
+        if hasattr(self, 'mainframe'):
+            self._destroy_frame()
+
         self.master.title('words to learn')
         self.master.geometry('800x300')
 
@@ -140,23 +143,28 @@ class Dictionary:
 
         tk.Button(self.mainframe, text='next', command=self._next).grid(row=4, column=1,
                                                                         ipady=self.ipady, ipadx=self.ipadx,
-                                                                        padx=self.padx, pady=self.pady)
+                                                                        padx=self.padx, pady=25)
 
         tk.Button(self.mainframe, text='put back', command=self._put_back).grid(row=4, column=0,
                                                                                 ipady=self.ipady, ipadx=self.ipadx,
-                                                                                padx=self.padx, pady=self.pady)
+                                                                                padx=self.padx, pady=25)
 
     def _next(self):
         if len(self.words) == self.i + 1:
             self._destroy_frame()
             self._create_frame()
             self.master.title('end')
-            tk.Label(self.mainframe, text='no more words left to practice').grid(row=0, column=0)
+            tk.Label(self.mainframe, text='no more words left to practice').grid(row=0, column=0, columnspan=2)
             tk.Button(self.mainframe, text='quit', command=self.master.quit).grid(row=1, column=0,
                                                                                   ipady=self.ipady,
                                                                                   ipadx=self.ipadx,
                                                                                   padx=self.padx,
                                                                                   pady=self.pady)
+            tk.Button(self.mainframe, text='restart', command=self.start).grid(row=1, column=1,
+                                                                               ipady=self.ipady,
+                                                                               ipadx=self.ipadx,
+                                                                               padx=self.padx,
+                                                                               pady=self.pady)
 
         else:
             self.i = self.i + 1
@@ -174,7 +182,8 @@ class Dictionary:
         self.mainframe.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
 
-LANG = input('which language: ')
+# LANG = input('which language: ')
+LANG = 'de'
 root = tk.Tk()
 my_dic = Dictionary(root, LANG)
 my_dic.start()
