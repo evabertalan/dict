@@ -70,11 +70,11 @@ class Dictionary:
         self._create_frame()
 
         if self.mode == 'word':
-            tk.Label(self.mainframe, text=self.words.iloc[self.i][0], bg=self.solid).grid(row=0, column=0,
-                                                                                          ipady=self.ipady,
-                                                                                          ipadx=self.ipadx,
-                                                                                          padx=self.padx,
-                                                                                          pady=self.pady)
+            tk.Label(self.mainframe, text=self.words.iloc[self.i][0], bg=self.bright).grid(row=0, column=0,
+                                                                                           ipady=self.ipady,
+                                                                                           ipadx=self.ipadx,
+                                                                                           padx=self.padx,
+                                                                                           pady=self.pady)
 
         if self.mode == 'meaning':
             tk.Label(self.mainframe, text=self.words.iloc[self.i][2], bg=self.solid).grid(row=0, column=0,
@@ -97,18 +97,19 @@ class Dictionary:
 
         if self.mode == 'word':
 
-            tk.Label(self.mainframe, text=self.words.iloc[self.i][0], bg=self.solid).grid(row=0, column=0, columnspan=2,
-                                                                                          ipady=self.ipady,
-                                                                                          ipadx=self.ipadx,
-                                                                                          padx=self.padx,
-                                                                                          pady=self.pady)
-
-            tk.Label(self.mainframe, text=self.words.iloc[self.i][2], bg=self.bright).grid(row=1, column=0,
+            tk.Label(self.mainframe, text=self.words.iloc[self.i][0], bg=self.bright).grid(row=0, column=0,
                                                                                            columnspan=2,
                                                                                            ipady=self.ipady,
                                                                                            ipadx=self.ipadx,
                                                                                            padx=self.padx,
                                                                                            pady=self.pady)
+
+            tk.Label(self.mainframe, text=self.words.iloc[self.i][2], bg=self.solid).grid(row=1, column=0,
+                                                                                          columnspan=2,
+                                                                                          ipady=self.ipady,
+                                                                                          ipadx=self.ipadx,
+                                                                                          padx=self.padx,
+                                                                                          pady=self.pady)
 
             tk.Label(self.mainframe, text=self.words.iloc[self.i][1]).grid(row=2, column=0, columnspan=2,
                                                                            ipady=self.ipady, ipadx=self.ipadx,
@@ -119,18 +120,18 @@ class Dictionary:
                                                                                      padx=self.padx, pady=self.pady)
 
         if self.mode == 'meaning':
-            tk.Label(self.mainframe, text=self.words.iloc[self.i][0], bg=self.bright).grid(row=0, column=0,
+            tk.Label(self.mainframe, text=self.words.iloc[self.i][2], bg=self.solid).grid(row=0, column=0, columnspan=2,
+                                                                                          ipady=self.ipady,
+                                                                                          ipadx=self.ipadx,
+                                                                                          padx=self.padx,
+                                                                                          pady=self.pady)
+
+            tk.Label(self.mainframe, text=self.words.iloc[self.i][0], bg=self.bright).grid(row=1, column=0,
                                                                                            columnspan=2,
                                                                                            ipady=self.ipady,
                                                                                            ipadx=self.ipadx,
                                                                                            padx=self.padx,
                                                                                            pady=self.pady)
-
-            tk.Label(self.mainframe, text=self.words.iloc[self.i][2], bg=self.solid).grid(row=1, column=0, columnspan=2,
-                                                                                          ipady=self.ipady,
-                                                                                          ipadx=self.ipadx,
-                                                                                          padx=self.padx,
-                                                                                          pady=self.pady)
 
             if type(self.words.iloc[self.i].sentence) is str:
                 tk.Label(self.mainframe, text=self.words.iloc[self.i].sentence).grid(row=2, column=0, columnspan=2,
